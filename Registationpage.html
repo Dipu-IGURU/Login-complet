@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- {% block head %} {% endblock %}{% load static %} -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Digital Brains</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link rel="icon" href="/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .form-radio {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: 1px solid #9CA3AF;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            position: relative;
+            top: 2px;
+        }
+        .form-radio:checked {
+            border-color: #3B82F6;
+            background-color: #3B82F6;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E");
+            background-size: 60%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .form-checkbox {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: 1px solid #9CA3AF;
+            border-radius: 4px;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            position: relative;
+            top: 2px;
+        }
+        .form-checkbox:checked {
+            background-color: #3B82F6;
+            border-color: #3B82F6;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.5 4.5L6 12L2.5 8.5L3.5 7.5L6 10L12.5 3.5L13.5 4.5Z'/%3E%3C/svg%3E");
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+</head>
+<style>
+    .active {
+        font-weight: bold;
+
+    }
+
+    /* Ensure the logo container starts from the left */
+    #logo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        /* Align content to the left */
+        padding: 0;
+        /* Remove any padding */
+
+    }
+
+    /* Additional styling for the logo image */
+    #logo img {
+        width: 230px;
+        /* Ensure the image fits within its container */
+        height: 80px;
+    }
+
+    
+</style>
+
+<body class="index-page" style="display: flex; flex-direction: column; min-height: 100vh; padding-top: 80px;">
+
+
+    <header id="header" class="header fixed-top" style="background-color: rgb(1,18,36);">
+
+
+        <!-- End Top Bar -->
+
+        <div id="branding" class="branding d-flex align-items-center" style="background-color: #011224;">
+            <div class="container position-relative d-flex align-items-center justify-content-between">
+                <a href="#" id="logo" class="logo d-flex align-items-center" target="_blank" rel="noopener noreferrer">
+                    <img style="height: 80%;" loading="lazy"
+                        src="https://digital-brains.io/static/app/iguru3/assets/img/Digital_Brains_io.png" alt="">
+                </a>
+
+
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="https://digital-brains.io/"
+                                class="{% if request.path == '/' %}active{% endif %}">All Products</a>
+                        </li>
+
+                        <!-- Office -->
+                        <!-- ============================================================================================= -->
+
+
+                        <li class="dropdown"><a href="#"><span> Office</span> </i></a>
+                            <!-- <ul>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/website/wordpress-website/">WordPress
+                                        Website</a></li>
+                            </ul> -->
+                        </li>
+
+                         <!-- Marketing & Advertising -->
+                        <!-- ====================================================================================== -->
+
+                        <li class="dropdown"><a href="#"><span>Marketing & Advertising</span> <i
+                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/content-creation/website-copywriting/">Marketing</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/content-creation/video-creation/">Promotional</a></li>
+                            </ul>
+
+                        </li>
+
+                        <!-- Digital Marketing -->
+                        <!-- ===================================================================================== -->
+
+                        <li class="dropdown"><a href="#"><span> Retail Printing</span></a>
+                            <!-- <ul>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/digital-marketing/local-seo/">Local SEO</a></li>
+                            </ul> -->
+
+                        </li>
+
+                        <!-- Display Exhibition -->
+                        <!-- ============================================================================ -->
+
+                        <li class="dropdown"><a href="#"><span> Display Exhibition</span> <i
+                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a class="dropdown-item" href="https://store.digital-brains.io/">(Indoor)</a></li>
+
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/services/remote-it-support/"> (Outdoor)</a></li>
+                            </ul>
+
+                        </li>
+                         
+                        <!--Festivals & Occasions -->
+                        <!-- ======================================================================================= -->
+                        <li class="dropdown"><a href="#"><span>Festivals & Occasions</span> <i
+                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a class="dropdown-item" href="https://digital-brains.io/free-file-transfer/">CHRISTMAS</a></li>
+                                <li><a class="dropdown-item" href="https://digital-brains.io/upload/">SEASONAL</a></li>
+                                <li><a class="dropdown-item" href="https://projectcamp.digital-brains.io/">Events & Occasions</a></li>
+                               
+                            </ul>
+
+                        </li>
+
+                        <!--ECO Products -->
+                        <!-- ===================================================================================== -->
+                        <li><a href="https://digital-brains.io/branding/"
+                                class="{% if request.path == '/branding/' %}active{% endif %}">ECO Products</a></li>
+
+                        <!-- Next Day Delivery -->
+                        <!-- ================================================================================== -->
+                        <li class="dropdown"><a href="#"><span>Next Day Delivery</span></a>
+                        </li>
+
+                        <!-- Sample Pack -->
+                        <!-- ================================================================================== -->
+                        <li class="dropdown"><a href="#"><span>Sample Pack</span></a>
+                        </li>
+
+                         <!-- Website        -->
+                        <!-- ================================================================================== -->
+                        <li><a href="https://printing.digital-brains.io/"
+                                class="{% if request.path == '/https://printing.digital-brains.io/' %}active{% endif %}">Website</a>
+                        </li>
+                    </ul>
+                    <i id="mobile-nav-toggle" class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-6 bg-gray-50 min-h-[calc(100vh-200px)] w-full">
+        <div class="w-full max-w-4xl bg-white rounded-lg shadow-sm p-8 border border-gray-200 mx-auto my-6">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Create an account</h1>
+            <p class="text-gray-600">Already have an account? <a href="login.html" class="text-blue-600 hover:underline">Log in here</a></p>
+        </div>
+        <form id="registerForm" class="space-y-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm text-blue-800">We only use your details for delivery!</p>
+            </div>
+            
+            <div class="space-y-1">
+                <p class="text-sm font-medium text-gray-700">Title <span class="text-red-500">*</span></p>
+                <div class="flex space-x-6">
+                    <label class="flex items-center">
+                        <input type="radio" name="title" value="Mr." class="form-radio" checked>
+                        <span class="ml-2 text-gray-700">Mr.</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="title" value="Ms." class="form-radio">
+                        <span class="ml-2 text-gray-700">Ms.</span>
+                    </label>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Left Column -->
+                <div class="space-y-4">
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First name <span class="text-red-500">*</span></label>
+                        <input type="text" id="firstName" name="firstName" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="postalCode" class="block text-sm font-medium text-gray-700 mb-1">Postal code <span class="text-red-500">*</span></label>
+                        <input type="text" id="postalCode" name="postalCode" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="landlinePhone" class="block text-sm font-medium text-gray-700 mb-1">Landline phone number</label>
+                        <input type="tel" id="landlinePhone" name="landlinePhone" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div class="relative">
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password <span class="text-red-500">*</span></label>
+                        <input type="password" id="password" name="password" class="w-full border border-gray-300 rounded px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        <button type="button" id="togglePassword" class="absolute right-3 top-9 text-blue-600 text-sm font-medium">Show</button>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-4">
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last name <span class="text-red-500">*</span></label>
+                        <input type="text" id="lastName" name="lastName" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City <span class="text-red-500">*</span></label>
+                        <input type="text" id="city" name="city" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="mobilePhone" class="block text-sm font-medium text-gray-700 mb-1">Mobile number <span class="text-red-500">*</span></label>
+                        <input type="tel" id="mobilePhone" name="mobilePhone" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Width Fields -->
+            <div class="space-y-4">
+                <div>
+                    <label for="address1" class="block text-sm font-medium text-gray-700 mb-1">Address <span class="text-red-500">*</span></label>
+                    <input type="text" id="address1" name="address1" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2" required>
+                    <input type="text" id="address2" name="address2" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Address line 2">
+                </div>
+                
+                <div class="text-sm">
+                    <p class="text-gray-700">Country</p>
+                    <p class="font-medium">United Kingdom</p>
+                </div>
+                
+                <div class="space-y-2">
+                    <p class="text-sm font-medium text-gray-700">Text me if urgent</p>
+                    <div class="flex space-x-6">
+                        <label class="flex items-center">
+                            <input type="radio" name="urgentText" value="Yes" class="form-radio" checked>
+                            <span class="ml-2 text-gray-700">Yes</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="urgentText" value="No" class="form-radio">
+                            <span class="ml-2 text-gray-700">No</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <label for="iam" class="block text-sm font-medium text-gray-700 mb-1">I am a... <span class="text-red-500">*</span></label>
+                    <select id="iam" name="iam" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        <option value="">Select an option</option>
+                        <option value="Business owner">Business owner</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Student">Student</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <div class="flex items-center mb-1">
+                        <label class="block text-sm font-medium text-gray-700">What is your annual print spend? <span class="text-red-500">*</span></label>
+                        <span class="ml-1 text-blue-600 cursor-help" title="How much do you usually spend per year on print?">ⓘ</span>
+                    </div>
+                    <select id="annualSpend" name="annualSpend" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        <option value="">Select an option</option>
+                        <option value="<£1000">Less than £1,000</option>
+                        <option value="£1000-£5000">£1,000 - £5,000</option>
+                        <option value=">£5000">More than £5,000</option>
+                    </select>
+                </div>
+                
+                <div class="space-y-4">
+                    <label class="flex items-start">
+                        <input type="checkbox" name="specialOffers" id="specialOffers" class="form-checkbox mt-1" checked>
+                        <span class="ml-2 text-sm text-gray-700">I would like to receive special discounts and offers via email!</span>
+                    </label>
+                    
+                    <label class="flex items-start">
+                        <input type="checkbox" name="terms" id="terms" class="form-checkbox mt-1" required>
+                        <span class="ml-2 text-sm text-gray-700">I accept the <a href="#" class="text-blue-600 hover:underline">Terms and conditions</a> and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a> of HelloPrint.</span>
+                    </label>
+                </div>
+                
+                <div class="text-xs text-gray-500">* Required field</div>
+                
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-md transition duration-150 ease-in-out">
+                    Create account
+                </button>
+            </div>
+        </form>
+        </div>
+    </main>
+
+
+    <!-- {% block body %} {% endblock %} -->
+
+
+
+
+    </div>
+
+<div id="scroll-nav">
+        <a href="https://outlook.office.com/bookwithme/me" target="_blank">
+            <span><i class="fas fa-calendar-alt"></i> <b>Request</b></span><span> Request an Appointment</span>
+        </a>
+        <a aria-label="Chat on WhatsApp"
+            href="https://wa.me/+447387371872?text=I'm%20interested%20in%20your%20car%20for%20sale" target="_blank">
+            <span><i class="fab fa-whatsapp"></i> <b>WhatsApp</b></span><span> Chat to a WhatsApp</span>
+        </a>
+        <a href="https://www.linkedin.com/company/105474436/admin/dashboard/" target="_blank">
+            <span><i class="fab fa-linkedin"></i> <b>Find Us</b></span><span> Connect with Us on LinkedIn</span>
+        </a>
+        <a href="https://uk.trustpilot.com/review/digital-brains.io" target="_blank">
+            <span><img src="https://1000logos.net/wp-content/uploads/2022/09/Trustpilot-Symbol.png" alt="Trustpilot"
+                    style="width: 60px; height: auto;"> <b style="font-size: 9px;">Trustpilot</b></span><span> Leave a
+                Trustpilot <br> Review</span>
+        </a>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="ww_right_content" style="background-color: whitesmoke;">
+
+
+
+        <div class="ti-widget" data-layout-id="5" data-set-id="light-background" data-pid="02d9ac2551017337855ef09de4"
+            data-pager-autoplay-timeout="6">
+            <div class="ti-widget-container ti-col-4">
+                <div class="ti-footer source-Google ti-clickable-link">
+                    <div class="ti-large-logo">
+                        <div class="ti-v-center"> <img class="ti-logo-fb"
+                                src="https://cdn.trustindex.io/assets/platform/Google/logo.svg" alt="Google" width="150"
+                                height="25"> </div>
+                    </div>
+                    <div class="ti-stars star-lg"> <span class="ti-star f"></span><span class="ti-star f"></span><span
+                            class="ti-star f"></span><span class="ti-star f"></span><span class="ti-star e"></span>
+                    </div>
+                    <div class="ti-rating-text"> <strong class="ti-rating"> GOOD </strong> <span class="nowrap">Based on
+                            <strong><a href="" target="_blank" rel="noopener">463 ratings</a></strong>.</span>
+                    </div>
+                </div>
+                <div class="ti-reviews-container">
+                    <div class="ti-controls">
+                        <div class="ti-next" style="display: block;"></div>
+                        <div class="ti-prev" style="display: block;"></div>
+                    </div>
+                    <div class="ti-reviews-container-wrapper">
+                        <div class="ti-review-item source-Google" style="position: relative;">
+                            <div class="ti-inner">
+                                <div class="ti-review-header">
+                                    <div class="ti-profile-img"> <img
+                                            src="https://lh3.googleusercontent.com/a-/ACNPEu8F48IFj4PABIozzEkGFRCcpTzik9FI2k-bsC9ohg=s120-c-c-rp-w64-h64-mo-br100"
+                                            alt="diego tomasoni"> </div>
+                                    <div class="ti-profile-details">
+                                        <div class="ti-name"> Wonderful website! </div>
+                                        <div class="ti-date"><strong>Date of experience:</strong> <br>
+                                            September 22, 2024.</div>
+                                    </div>
+                                </div>
+                                <div class="ti-stars"><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span></div>
+                                <div class="ti-review-content">Our website came out beautifully well. This company was
+                                    able to deliver a nice site. Smooth process from start to finish. The monthly
+                                    payment facility is really helpful.</div>
+                            </div>
+                        </div>
+                        <div class="ti-review-item source-Google" style="position: relative;">
+                            <div class="ti-inner">
+                                <div class="ti-review-header">
+                                    <div class="ti-profile-img"> <img
+                                            src="https://lh3.googleusercontent.com/a/ALm5wu3dIT0cBJJOefufggiKBG6TvcJrFEHLfbSMYY1o=s120-c-c-rp-w64-h64-mo-br100"
+                                            alt="Elio Basciani"> </div>
+                                    <div class="ti-profile-details">
+                                        <div class="ti-name"> Digital brains helped <br>our business go fly. </div>
+                                        <div class="ti-date"> <strong>Date of experience:</strong> <br>
+                                            October 15, 2024</div>
+                                    </div>
+                                </div>
+                                <div class="ti-stars"><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span></div>
+                                <div class="ti-review-content"> We hired SEO services from Digital Brains which helped
+                                    us reach good traffic. Our business which started last year has become a national
+                                    business after the keywords started ranking, thanks to them. </div>
+                            </div>
+                        </div>
+                        <div class="ti-review-item source-Google" style="position: relative;">
+                            <div class="ti-inner">
+                                <div class="ti-review-header">
+                                    <div class="ti-profile-img"> <img
+                                            src="https://lh3.googleusercontent.com/a/AItbvmkh4q2jhW709798IQoVcR_BuCbUcX8nNtezzIM=s120-c-c-rp-w64-h64-mo-br100"
+                                            alt="Stefano pistone"> </div>
+                                    <div class="ti-profile-details">
+                                        <div class="ti-name">It's a great company to <br> have even small <br>tasks
+                                            done. </div>
+                                        <div class="ti-date"><strong>Date of experience:</strong> <br>
+                                            October 9, 2024</div>
+                                    </div>
+                                </div>
+                                <div class="ti-stars"><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span></div>
+                                <div class="ti-review-content"> We require some frequent social media posts to engage
+                                    our customers. Digital brains helped us with these posts and also gave us a way to
+                                    generate extra sales for our business.</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="ti-controls-dots">
+                        <div class="dot" data-pager-state="0"></div>
+                        <div class="dot active" data-pager-state="1"></div>
+                        <div class="dot" data-pager-state="2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>// Review Slider Start
+        $(".review_slider").owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 500,
+            items: 1,
+            dots: false,
+            nav: false,
+        });
+
+        $('.selectpicker').on('show.bs.select', function ($this, e) {
+            typed4.stop();
+            //year_typed4.stop();
+            //model_typed4.stop();
+            autos_typed4.stop();
+        });
+
+        $('.selectpicker').on('hide.bs.select', function () {
+            typed4.start();
+            //year_typed4.start();
+            //model_typed4.start();
+            autos_typed4.start();
+        });
+    </script>
+    <br>
+    <br>
+    <br>
+
+
+
+    <!-- Required Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".review_slider").owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplaySpeed: 500,
+                items: 3,  /* Change this to 3 for showing 3 reviews per slide */
+                dots: false,
+                nav: false,
+                margin: 10, /* Add margin between reviews if necessary */
+                responsive: {
+                    0: {
+                        items: 1  /* Display 1 item for mobile screens */
+                    },
+                    600: {
+                        items: 2  /* Display 2 items for medium screens */
+                    },
+                    1000: {
+                        items: 3  /* Display 3 items for larger screens */
+                    }
+                }
+            });
+        });
+    </script>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Call-to-action Section - Home Page -->
+    <section id="cta-section" class="cta-section">
+        <div id="cta-container" class="container">
+            <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+                <div class="col-xl-10">
+                    <div id="cta-text" class="text-center">
+
+                        <h3 id="cta-heading-large">Have a great online business idea!</h3>
+                        <p id="cta-paragraph">Let us listen to you. We like to listen and convert your dreams into a
+                            reality.
+                            Stop worrying about technology problems.
+                            Focus on your business. Let us provide the support you deserve.</p>
+                        <h5 id="cta-heading-small" class="text-white">Let’s get started</h5>
+                        <a id="cta-button" class="cta-btn" href="https://outlook.office.com/bookwithme/me">Book an
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Call-to-action Section -->
+
+
+
+    <footer id="footer" class="footer" style="background-color: #011224;">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-12 footer-about">
+                    <a href="{% url 'home' %}" class="logo d-flex align-items-center" target="_blank"
+                        rel="noopener noreferrer">
+                        <img style="height: 80%;" loading="lazy"
+                            src="https://digital-brains.io/static/app/iguru3/assets/img/Digital_Brains_io.png" alt="">
+                    </a>
+                    <p>
+                        <strong> Your Partner in Digital Success</strong><br>
+                        Ready to Elevate Your Business?<br>
+                        At Digital Brains, we're dedicated to helping you achieve smart business by digitizing your
+                        business processes. Our comprehensive suite of services includes: <a href="#"><strong
+                                style="color: white;">Read more.........</strong></a>
+                    </p>
+
+
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/105474436/admin/dashboard/"><i
+                                class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Nearest Expert</a></li>
+                        <li><a href="#">Free Site Audit</a></li>
+                        <li><a href="#">Faqs</a></li>
+                        <li><a href="#">Website</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Content Creation</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Free Products</a></li>
+                        <li><a href="#">Website Projects</a></li>
+                        <li><a href="#">Awesome Screen Shots</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Re Seller</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Cookies Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Gdpr</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Employee Login</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                    <h4>Contact Us</h4>
+                    <p> Digital Brains.io Ltd</p>
+                    <p> 128 City Road,
+                        London, </p>
+                    <p>EC1V 2NX</p>
+                    <p class=""><strong>Company no : </strong> <span>15921176(England and Wales)</span></p>
+                    <!-- <p class="mt-4"><strong>Phone:</strong> <span>020 3005 7436</span></p> -->
+                    <!-- <p><strong>Support Email:</strong> <span>projects@digital-brains.io</span></p> -->
+                    <p><strong> Email:</strong> <span>projects@digital-brains.io</span></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Digital Brains</strong> <span>All Rights
+                    Reserved</span></p>
+            <div class="credits">
+
+                Designed by <a href="" style="color: whitesmoke;">Digital Brains</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

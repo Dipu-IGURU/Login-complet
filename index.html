@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- {% block head %} {% endblock %}{% load static %} -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Login - Digital Brains</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link rel="icon" href="/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .form-input {
+            @apply w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+        }
+        .btn-primary {
+            @apply w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+        }
+        .form-checkbox {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: 1px solid #9CA3AF;
+            border-radius: 4px;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            position: relative;
+            top: 2px;
+        }
+        .form-checkbox:checked {
+            background-color: #3B82F6;
+            border-color: #3B82F6;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.5 4.5L6 12L2.5 8.5L3.5 7.5L6 10L12.5 3.5L13.5 4.5Z'/%3E%3C/svg%3E");
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" style="background-color: rgb(1,18,36);">
+
+
+        <!-- End Top Bar -->
+
+        <div id="branding" class="branding d-flex align-items-center" style="background-color: #011224;">
+            <div class="container position-relative d-flex align-items-center justify-content-between">
+                <a href="#" id="logo" class="logo d-flex align-items-center" target="_blank" rel="noopener noreferrer">
+                    <img style="height: 80%;" loading="lazy"
+                        src="https://digital-brains.io/static/app/iguru3/assets/img/Digital_Brains_io.png" alt="">
+                </a>
+
+
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="https://digital-brains.io/"
+                                class="{% if request.path == '/' %}active{% endif %}">All Products</a>
+                        </li>
+
+                        <!-- Office -->
+                        <!-- ============================================================================================= -->
+
+
+                        <li class="dropdown"><a href="#"><span> Office</span> </i></a>
+                            <!-- <ul>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/website/wordpress-website/">WordPress
+                                        Website</a></li>
+                            </ul> -->
+                        </li>
+
+                         <!-- Marketing & Advertising -->
+                        <!-- ====================================================================================== -->
+
+                        <li class="dropdown"><a href="#"><span>Marketing & Advertising</span> <i
+                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/content-creation/website-copywriting/">Marketing</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/content-creation/video-creation/">Promotional</a></li>
+                            </ul>
+
+                        </li>
+
+                        <!-- Digital Marketing -->
+                        <!-- ===================================================================================== -->
+
+                        <li class="dropdown"><a href="#"><span> Retail Printing</span></a>
+                            <!-- <ul>
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/digital-marketing/local-seo/">Local SEO</a></li>
+                            </ul> -->
+
+                        </li>
+
+                        <!-- Display Exhibition -->
+                        <!-- ============================================================================ -->
+
+                        <li class="dropdown"><a href="#"><span> Display Exhibition</span> <i
+                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a class="dropdown-item" href="https://store.digital-brains.io/">(Indoor)</a></li>
+
+                                <li><a class="dropdown-item"
+                                        href="https://digital-brains.io/services/remote-it-support/"> (Outdoor)</a></li>
+                            </ul>
+
+                        </li>
+                         
+                        <!--Festivals & Occasions -->
+                        <!-- ======================================================================================= -->
+                        <li class="dropdown"><a href="#"><span>Festivals & Occasions</span> <i
+                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a class="dropdown-item" href="https://digital-brains.io/free-file-transfer/">CHRISTMAS</a></li>
+                                <li><a class="dropdown-item" href="https://digital-brains.io/upload/">SEASONAL</a></li>
+                                <li><a class="dropdown-item" href="https://projectcamp.digital-brains.io/">Events & Occasions</a></li>
+                               
+                            </ul>
+
+                        </li>
+
+                        <!--ECO Products -->
+                        <!-- ===================================================================================== -->
+                        <li><a href="https://digital-brains.io/branding/"
+                                class="{% if request.path == '/branding/' %}active{% endif %}">ECO Products</a></li>
+
+                        <!-- Next Day Delivery -->
+                        <!-- ================================================================================== -->
+                        <li class="dropdown"><a href="#"><span>Next Day Delivery</span></a>
+                        </li>
+
+                        <!-- Sample Pack -->
+                        <!-- ================================================================================== -->
+                        <li class="dropdown"><a href="#"><span>Sample Pack</span></a>
+                        </li>
+
+                         <!-- Website        -->
+                        <!-- ================================================================================== -->
+                        <li><a href="https://printing.digital-brains.io/"
+                                class="{% if request.path == '/https://printing.digital-brains.io/' %}active{% endif %}">Website</a>
+                        </li>
+                    </ul>
+                    <i id="mobile-nav-toggle" class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="pt-24 md:pt-28">
+    <div class="w-full max-w-5xl mx-auto py-6 sm:py-10 md:py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <!-- New Customers -->
+            <div class="bg-white rounded-lg shadow p-5 sm:p-8 flex flex-col justify-between ">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-blue-900 mb-2">New Customers</h2>
+                    <p class="font-semibold text-sm text-gray-800 mb-1">Register Now</p>
+                    <p class="text-gray-700 text-sm mb-6">By placing your first order you create an account that can then be used to manage existing products and place new orders.</p>
+                </div>
+                <a href="Registationpage.html" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 sm:px-6 py-2 rounded font-medium w-full sm:w-max mt-2 text-center">PLACE AN ORDER</a>
+            </div>
+            <!-- Existing Customers -->
+            <div class="bg-white rounded-lg shadow p-5 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-blue-900 mb-2">Existing Customers</h2>
+                    <p class="font-semibold text-sm text-black mb-1">Already registered with Digital Brains?</p>
+                    <p class="text-black text-sm mb-6">If so, click the button below to login to our client area from where you can manage your account.</p>
+                </div>
+                <a href="login.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 rounded font-medium w-full sm:w-max mt-2 text-center">SECURE LOG IN</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- ======= Footer ======= -->
+    <div id="scroll-nav">
+        <a href="https://outlook.office.com/bookwithme/me" target="_blank">
+            <span><i class="fas fa-calendar-alt"></i> <b>Request</b></span><span> Request an Appointment</span>
+        </a>
+        <a aria-label="Chat on WhatsApp"
+            href="https://wa.me/+447387371872?text=I'm%20interested%20in%20your%20car%20for%20sale" target="_blank">
+            <span><i class="fab fa-whatsapp"></i> <b>WhatsApp</b></span><span> Chat to a WhatsApp</span>
+        </a>
+        <a href="https://www.linkedin.com/company/105474436/admin/dashboard/" target="_blank">
+            <span><i class="fab fa-linkedin"></i> <b>Find Us</b></span><span> Connect with Us on LinkedIn</span>
+        </a>
+        <a href="https://uk.trustpilot.com/review/digital-brains.io" target="_blank">
+            <span><img src="https://1000logos.net/wp-content/uploads/2022/09/Trustpilot-Symbol.png" alt="Trustpilot"
+                    style="width: 60px; height: auto;"> <b style="font-size: 9px;">Trustpilot</b></span><span> Leave a
+                Trustpilot <br> Review</span>
+        </a>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="ww_right_content" style="background-color: whitesmoke;">
+
+
+
+        <div class="ti-widget" data-layout-id="5" data-set-id="light-background" data-pid="02d9ac2551017337855ef09de4"
+            data-pager-autoplay-timeout="6">
+            <div class="ti-widget-container ti-col-4">
+                <div class="ti-footer source-Google ti-clickable-link">
+                    <div class="ti-large-logo">
+                        <div class="ti-v-center"> <img class="ti-logo-fb"
+                                src="https://cdn.trustindex.io/assets/platform/Google/logo.svg" alt="Google" width="150"
+                                height="25"> </div>
+                    </div>
+                    <div class="ti-stars star-lg"> <span class="ti-star f"></span><span class="ti-star f"></span><span
+                            class="ti-star f"></span><span class="ti-star f"></span><span class="ti-star e"></span>
+                    </div>
+                    <div class="ti-rating-text"> <strong class="ti-rating"> GOOD </strong> <span class="nowrap">Based on
+                            <strong><a href="" target="_blank" rel="noopener">463 ratings</a></strong>.</span>
+                    </div>
+                </div>
+                <div class="ti-reviews-container">
+                    <div class="ti-controls">
+                        <div class="ti-next" style="display: block;"></div>
+                        <div class="ti-prev" style="display: block;"></div>
+                    </div>
+                    <div class="ti-reviews-container-wrapper">
+                        <div class="ti-review-item source-Google" style="position: relative;">
+                            <div class="ti-inner">
+                                <div class="ti-review-header">
+                                    <div class="ti-profile-img"> <img
+                                            src="https://lh3.googleusercontent.com/a-/ACNPEu8F48IFj4PABIozzEkGFRCcpTzik9FI2k-bsC9ohg=s120-c-c-rp-w64-h64-mo-br100"
+                                            alt="diego tomasoni"> </div>
+                                    <div class="ti-profile-details">
+                                        <div class="ti-name"> Wonderful website! </div>
+                                        <div class="ti-date"><strong>Date of experience:</strong> <br>
+                                            September 22, 2024.</div>
+                                    </div>
+                                </div>
+                                <div class="ti-stars"><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span></div>
+                                <div class="ti-review-content">Our website came out beautifully well. This company was
+                                    able to deliver a nice site. Smooth process from start to finish. The monthly
+                                    payment facility is really helpful.</div>
+                            </div>
+                        </div>
+                        <div class="ti-review-item source-Google" style="position: relative;">
+                            <div class="ti-inner">
+                                <div class="ti-review-header">
+                                    <div class="ti-profile-img"> <img
+                                            src="https://lh3.googleusercontent.com/a/ALm5wu3dIT0cBJJOefufggiKBG6TvcJrFEHLfbSMYY1o=s120-c-c-rp-w64-h64-mo-br100"
+                                            alt="Elio Basciani"> </div>
+                                    <div class="ti-profile-details">
+                                        <div class="ti-name"> Digital brains helped <br>our business go fly. </div>
+                                        <div class="ti-date"> <strong>Date of experience:</strong> <br>
+                                            October 15, 2024</div>
+                                    </div>
+                                </div>
+                                <div class="ti-stars"><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span></div>
+                                <div class="ti-review-content"> We hired SEO services from Digital Brains which helped
+                                    us reach good traffic. Our business which started last year has become a national
+                                    business after the keywords started ranking, thanks to them. </div>
+                            </div>
+                        </div>
+                        <div class="ti-review-item source-Google" style="position: relative;">
+                            <div class="ti-inner">
+                                <div class="ti-review-header">
+                                    <div class="ti-profile-img"> <img
+                                            src="https://lh3.googleusercontent.com/a/AItbvmkh4q2jhW709798IQoVcR_BuCbUcX8nNtezzIM=s120-c-c-rp-w64-h64-mo-br100"
+                                            alt="Stefano pistone"> </div>
+                                    <div class="ti-profile-details">
+                                        <div class="ti-name">It's a great company to <br> have even small <br>tasks
+                                            done. </div>
+                                        <div class="ti-date"><strong>Date of experience:</strong> <br>
+                                            October 9, 2024</div>
+                                    </div>
+                                </div>
+                                <div class="ti-stars"><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span><span
+                                        class="ti-star f"></span><span class="ti-star f"></span></div>
+                                <div class="ti-review-content"> We require some frequent social media posts to engage
+                                    our customers. Digital brains helped us with these posts and also gave us a way to
+                                    generate extra sales for our business.</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="ti-controls-dots">
+                        <div class="dot" data-pager-state="0"></div>
+                        <div class="dot active" data-pager-state="1"></div>
+                        <div class="dot" data-pager-state="2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>// Review Slider Start
+        $(".review_slider").owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 500,
+            items: 1,
+            dots: false,
+            nav: false,
+        });
+
+        $('.selectpicker').on('show.bs.select', function ($this, e) {
+            typed4.stop();
+            //year_typed4.stop();
+            //model_typed4.stop();
+            autos_typed4.stop();
+        });
+
+        $('.selectpicker').on('hide.bs.select', function () {
+            typed4.start();
+            //year_typed4.start();
+            //model_typed4.start();
+            autos_typed4.start();
+        });
+    </script>
+    <br>
+    <br>
+    <br>
+
+
+
+    <!-- Required Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".review_slider").owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplaySpeed: 500,
+                items: 3,  /* Change this to 3 for showing 3 reviews per slide */
+                dots: false,
+                nav: false,
+                margin: 10, /* Add margin between reviews if necessary */
+                responsive: {
+                    0: {
+                        items: 1  /* Display 1 item for mobile screens */
+                    },
+                    600: {
+                        items: 2  /* Display 2 items for medium screens */
+                    },
+                    1000: {
+                        items: 3  /* Display 3 items for larger screens */
+                    }
+                }
+            });
+        });
+    </script>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Call-to-action Section - Home Page -->
+    <section id="cta-section" class="cta-section">
+        <div id="cta-container" class="container">
+            <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+                <div class="col-xl-10">
+                    <div id="cta-text" class="text-center">
+
+                        <h3 id="cta-heading-large">Have a great online business idea!</h3>
+                        <p id="cta-paragraph">Let us listen to you. We like to listen and convert your dreams into a
+                            reality.
+                            Stop worrying about technology problems.
+                            Focus on your business. Let us provide the support you deserve.</p>
+                        <h5 id="cta-heading-small" class="text-white">Let’s get started</h5>
+                        <a id="cta-button" class="cta-btn" href="https://outlook.office.com/bookwithme/me">Book an
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Call-to-action Section -->
+
+
+
+    <footer id="footer" class="footer" style="background-color: #011224;">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-12 footer-about">
+                    <a href="{% url 'home' %}" class="logo d-flex align-items-center" target="_blank"
+                        rel="noopener noreferrer">
+                        <img style="height: 80%;" loading="lazy"
+                            src="https://digital-brains.io/static/app/iguru3/assets/img/Digital_Brains_io.png" alt="">
+                    </a>
+                    <p>
+                        <strong> Your Partner in Digital Success</strong><br>
+                        Ready to Elevate Your Business?<br>
+                        At Digital Brains, we're dedicated to helping you achieve smart business by digitizing your
+                        business processes. Our comprehensive suite of services includes: <a href="#"><strong
+                                style="color: white;">Read more.........</strong></a>
+                    </p>
+
+
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/105474436/admin/dashboard/"><i
+                                class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Nearest Expert</a></li>
+                        <li><a href="#">Free Site Audit</a></li>
+                        <li><a href="#">Faqs</a></li>
+                        <li><a href="#">Website</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Content Creation</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Free Products</a></li>
+                        <li><a href="#">Website Projects</a></li>
+                        <li><a href="#">Awesome Screen Shots</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Re Seller</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Cookies Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Gdpr</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Employee Login</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                    <h4>Contact Us</h4>
+                    <p> Digital Brains.io Ltd</p>
+                    <p> 128 City Road,
+                        London, </p>
+                    <p>EC1V 2NX</p>
+                    <p class=""><strong>Company no : </strong> <span>15921176(England and Wales)</span></p>
+                    <!-- <p class="mt-4"><strong>Phone:</strong> <span>020 3005 7436</span></p> -->
+                    <!-- <p><strong>Support Email:</strong> <span>projects@digital-brains.io</span></p> -->
+                    <p><strong> Email:</strong> <span>projects@digital-brains.io</span></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Digital Brains</strong> <span>All Rights
+                    Reserved</span></p>
+            <div class="credits">
+
+                Designed by <a href="" style="color: whitesmoke;">Digital Brains</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
